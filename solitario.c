@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include<string.h>
+
 
 #define NUM_RIGHE 10
 #define NUM_COLONNE 10
@@ -17,7 +19,7 @@ void inizializza_tabellone(tabellone t)
   {
     for (int c = 0; c < NUM_COLONNE; c++)
     {
-      t[r][c] = 0;
+      t[r][c] = -1 ;
     }
   }
 }
@@ -25,7 +27,7 @@ void inizializza_tabellone(tabellone t)
 void ele_to_string(int n, char s[2])
 {
   if (n == -1)
-    strpy(s, "  ");
+    strcpy(s, "  ");
   else
   {
     int u = n % 10;
@@ -37,7 +39,7 @@ void ele_to_string(int n, char s[2])
       s[1] = '0' + d;
 
     if (n == 0)
-      strpy(s, "  0");
+      strcpy(s, "  0");
   }
 }
 void stampa_tabellone(tabellone t)
@@ -50,8 +52,9 @@ void stampa_tabellone(tabellone t)
     printf("-\n");
 
     for (int c = 0; c < NUM_COLONNE; c++)
-    {
-      printf("| %2d ", t[r][c]);
+    { char  s[2] ; 
+      ele_to_string(t[r][c], s) ;
+      printf("| %s ", s );
     }
     printf("|\n");
   }
